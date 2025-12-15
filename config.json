@@ -3,18 +3,18 @@
   "requireName": true,
   "giftTiers": [
     {
-      "minScore": 0,
-      "label": "Niveau Bronze"
+      "minScore": 50,
+      "label": "Niveau Bronze, tu n'aura pas de cadeaux, mais un bisous !"
     },
     {
-      "minScore": 80,
-      "label": "Niveau Argent"
+      "minScore": 100,
+      "label": "Niveau Argent, tu mérite une petite enveloppe !"
     },
     {
-      "minScore": 140,
-      "label": "Niveau Or"
+      "minScore": 180,
+      "label": "Niveau Or, tu à le droit à un gros cadeaux !"
     }
   ],
   "pointsPerQuestionDefault": 10,
-  "timePerQuestionSeconds": 30
+  "timePerQuestionSeconds": 45
 }
