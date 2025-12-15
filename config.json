@@ -1,0 +1,10 @@
+{
+  "quizTitle": "Quiz Cadeau Surprise",
+  "requireName": true,
+  "giftTiers": [
+    { "minScore": 0, "label": "Niveau Bronze" },
+    { "minScore": 30, "label": "Niveau Argent" },
+    { "minScore": 50, "label": "Niveau Or" }
+  ],
+  "pointsPerQuestionDefault": 10
+}

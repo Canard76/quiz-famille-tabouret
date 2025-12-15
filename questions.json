@@ -1,0 +1,35 @@
+[
+  {
+    "type": "qcm",
+    "question": "Quelle est la capitale de la France ?",
+    "choices": ["Paris", "Lyon", "Marseille", "Bordeaux"],
+    "answer": 0,
+    "points": 10
+  },
+  {
+    "type": "vf",
+    "question": "Le soleil est une planète.",
+    "answer": false,
+    "points": 10
+  },
+  {
+    "type": "qcm",
+    "question": "Quelle boisson contient de la caféine ?",
+    "choices": ["Eau", "Jus d'orange", "Café", "Lait"],
+    "answer": 2,
+    "points": 10
+  },
+  {
+    "type": "vf",
+    "question": "Le symbole chimique de l'eau est H2O.",
+    "answer": true,
+    "points": 10
+  },
+  {
+    "type": "qcm",
+    "question": "Combien font 3 × 4 ?",
+    "choices": ["7", "12", "10", "14"],
+    "answer": 1,
+    "points": 10
+  }
+]
