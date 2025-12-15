@@ -25,12 +25,12 @@
   },
   {
     "type": "qcm",
-    "question": "Quel pays est célèbre pour les sushis ?",
+    "question": "Quel auteur a écrit 'Les Misérables' ?",
     "choices": [
-      "Chine",
-      "Japon",
-      "Corée",
-      "Thaïlande"
+      "Émile Zola",
+      "Victor Hugo",
+      "Honoré de Balzac",
+      "Marvin"
     ],
     "answer": 1,
     "points": 10
@@ -63,10 +63,10 @@
     "type": "qcm",
     "question": "Quel personnage Disney perd sa chaussure au bal ?",
     "choices": [
-      "Ariel",
+      "Nina",
       "Cendrillon",
       "Belle",
-      "Raiponce"
+      "Katia"
     ],
     "answer": 1,
     "points": 10
@@ -121,12 +121,12 @@
   },
   {
     "type": "qcm",
-    "question": "Quel est le prénom du héros dans 'The Legend of Zelda' ?",
+    "question": "Quel est le nombre de minutes dans 2 heures 10 ?",
     "choices": [
-      "Zelda",
-      "Link",
-      "Ganondorf",
-      "Mario"
+      "je sais pas",
+      "130",
+      "150",
+      "120"
     ],
     "answer": 1,
     "points": 10
@@ -145,26 +145,26 @@
   },
   {
     "type": "qcm",
-    "question": "Quel ingrédient principal du houmous ?",
+    "question": "Quelle unité mesure l'intensité d'un courant électrique ?",
     "choices": [
-      "Pois chiches",
-      "Lentilles",
-      "Haricots",
-      "Aubergines"
+      "Volt",
+      "Watt",
+      "Ampère",
+      "Ohm"
     ],
-    "answer": 0,
+    "answer": 2,
     "points": 10
   },
   {
     "type": "qcm",
-    "question": "Quel animal est l'emblème de la saga Pokémon ?",
+    "question": "Quelle couleur obtient-on en mélangeant bleu et jaune ?",
     "choices": [
-      "Pikachu",
-      "Bulbizarre",
-      "Dracaufeu",
-      "Salamèche"
+      "Orange",
+      "Vert",
+      "Violet",
+      "Marron"
     ],
-    "answer": 0,
+    "answer": 1,
     "points": 10
   },
   {
@@ -234,7 +234,7 @@
       "Thor",
       "Loki",
       "Hulk",
-      "Captain America"
+      "Jean-Yves"
     ],
     "answer": 0,
     "points": 10
