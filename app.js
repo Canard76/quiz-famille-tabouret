@@ -1,24 +1,18 @@
 const defaultConfig = {
-  quizTitle: "Quiz Familial — Culture Pop & Cuisine",
+  quizTitle: "Quiz Familial — Pop & Cuisine (40 questions)",
   requireName: true,
   giftTiers: [
-    { minScore: 0,  label: "Niveau Bronze" },
-    { minScore: 80, label: "Niveau Argent" },
-    { minScore: 140, label: "Niveau Or" }
+    { minScore: 0,   label: "Niveau Bronze" },
+    { minScore: 200, label: "Niveau Argent" },
+    { minScore: 320, label: "Niveau Or" }
   ],
   pointsPerQuestionDefault: 10,
-  timePerQuestionSeconds: 15
+  timePerQuestionSeconds: 45
 };
 
 let CONFIG = { ...defaultConfig };
 let QUESTIONS = [];
-let state = {
-  index: 0,
-  score: 0,
-  answers: [],
-  timer: null,
-  timeLeft: defaultConfig.timePerQuestionSeconds
-};
+let state = { index: 0, score: 0, answers: [], timer: null, timeLeft: defaultConfig.timePerQuestionSeconds };
 
 function shuffle(array) {
   for (let i = array.length - 1; i > 0; i--) {
@@ -29,15 +23,8 @@ function shuffle(array) {
 }
 
 async function loadData() {
-  try {
-    const cfgResp = await fetch('config.json');
-    if (cfgResp.ok) {
-      const cfg = await cfgResp.json();
-      CONFIG = { ...defaultConfig, ...cfg };
-    }
-  } catch (e) { console.warn('Config par défaut utilisée', e); }
-  const qResp = await fetch('questions.json');
-  QUESTIONS = await qResp.json();
+  try { const cfgResp = await fetch('config.json'); if (cfgResp.ok) { const cfg = await cfgResp.json(); CONFIG = { ...defaultConfig, ...cfg }; } } catch (e) { console.warn('Config par défaut utilisée', e); }
+  const qResp = await fetch('questions.json'); QUESTIONS = await qResp.json();
 }
 
 function startTimer() {
@@ -45,14 +32,21 @@ function startTimer() {
   state.timeLeft = CONFIG.timePerQuestionSeconds;
   const timeEl = document.getElementById('timeLeft');
   const fill = document.getElementById('timerFill');
+  const label = document.getElementById('timerLabel');
   const total = CONFIG.timePerQuestionSeconds;
   timeEl.textContent = state.timeLeft;
   fill.style.width = '100%';
+  fill.classList.remove('danger');
+  label.classList.remove('danger');
   state.timer = setInterval(() => {
     state.timeLeft--;
     timeEl.textContent = state.timeLeft;
     const pct = Math.max(0, Math.min(100, Math.round(100 * state.timeLeft / total)));
     fill.style.width = pct + '%';
+    if (state.timeLeft <= 5) {
+      fill.classList.add('danger');
+      label.classList.add('danger');
+    }
     if (state.timeLeft <= 0) {
       clearInterval(state.timer);
       autoValidateTimeout();
@@ -89,29 +83,53 @@ function renderQuestion() {
       });
       choicesEl.appendChild(div);
     });
+  } else if (q.type === 'vf') {
+    ['Vrai','Faux'].forEach((label, idx) => {
+      const val = idx === 0; // Vrai=true, Faux=false
+      const div = document.createElement('div');
+      div.className = 'choice';
+      div.textContent = label;
+      div.dataset.value = String(val);
+      div.addEventListener('click', () => {
+        document.querySelectorAll('.choice').forEach(el => el.classList.remove('selected'));
+        div.classList.add('selected');
+        nextBtn.disabled = false;
+      });
+      choicesEl.appendChild(div);
+    });
   }
   startTimer();
 }
 
-function finalizeSelectionAndFeedback(selectedIndex) {
+function finalizeSelectionAndFeedback(selectedIndex, selectedBool) {
   const q = QUESTIONS[state.index];
   const points = q.points ?? CONFIG.pointsPerQuestionDefault;
   let correct = false;
 
-  // feedback visuel
   document.querySelectorAll('.choice').forEach(el => {
-    const idx = parseInt(el.dataset.index, 10);
-    if (idx === q.answer) el.classList.add('correct');
-    if (selectedIndex !== null && idx === selectedIndex && idx !== q.answer) el.classList.add('wrong');
+    if (q.type === 'qcm') {
+      const idx = parseInt(el.dataset.index, 10);
+      if (idx === q.answer) el.classList.add('correct');
+      if (selectedIndex !== null && idx === selectedIndex && idx !== q.answer) el.classList.add('wrong');
+    } else {
+      const val = el.dataset.value === 'true';
+      if (val === q.answer) el.classList.add('correct');
+      if (selectedBool !== null && val === selectedBool && val !== q.answer) el.classList.add('wrong');
+    }
   });
 
-  if (selectedIndex !== null) correct = selectedIndex === q.answer;
+  if (q.type === 'qcm') {
+    if (selectedIndex !== null) correct = selectedIndex === q.answer;
+  } else {
+    if (selectedBool !== null) correct = selectedBool === q.answer;
+  }
+
   if (correct) state.score += points;
 
   state.answers.push({
     question: q.question,
-    correctAnswer: q.choices[q.answer],
-    selected: selectedIndex !== null ? q.choices[selectedIndex] : '(aucune)',
+    correctAnswer: q.type === 'qcm' ? q.choices[q.answer] : (q.answer ? 'Vrai' : 'Faux'),
+    selected: q.type === 'qcm' ? (selectedIndex !== null ? q.choices[selectedIndex] : '(aucune)') : (selectedBool !== null ? (selectedBool ? 'Vrai' : 'Faux') : '(aucune)'),
     correct,
     points: correct ? points : 0
   });
@@ -130,15 +148,19 @@ function finalizeSelectionAndFeedback(selectedIndex) {
 
 function validateAndNext() {
   clearInterval(state.timer);
-  const selEl = document.querySelector('.choice.selected');
-  const selectedIndex = selEl ? parseInt(selEl.dataset.index, 10) : null;
-  finalizeSelectionAndFeedback(selectedIndex);
+  const q = QUESTIONS[state.index];
+  if (q.type === 'qcm') {
+    const selEl = document.querySelector('.choice.selected');
+    const selectedIndex = selEl ? parseInt(selEl.dataset.index, 10) : null;
+    finalizeSelectionAndFeedback(selectedIndex, null);
+  } else {
+    const selEl = document.querySelector('.choice.selected');
+    const selectedBool = selEl ? (selEl.dataset.value === 'true') : null;
+    finalizeSelectionAndFeedback(null, selectedBool);
+  }
 }
 
-function autoValidateTimeout() {
-  // Pas de sélection: enregistre comme faux et passe à la suivante
-  finalizeSelectionAndFeedback(null);
-}
+function autoValidateTimeout() { finalizeSelectionAndFeedback(null, null); }
 
 function giftLabelForScore(score) {
   const tiers = [...CONFIG.giftTiers].sort((a,b) => a.minScore - b.minScore);

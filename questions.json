@@ -1,120 +1,24 @@
 [
   {
     "type": "qcm",
-    "question": "Quel personnage est le meilleur ami de Mickey Mouse ?",
+    "question": "Quel film d'animation met en scène Woody et Buzz l'Éclair ?",
     "choices": [
-      "Donald",
-      "Dingo",
-      "Pluto",
-      "Minnie"
-    ],
-    "answer": 1,
-    "points": 10
-  },
-  {
-    "type": "qcm",
-    "question": "Quel est le prénom du héros dans le jeu 'The Legend of Zelda' ?",
-    "choices": [
-      "Zelda",
-      "Link",
-      "Ganondorf",
-      "Mario"
-    ],
-    "answer": 1,
-    "points": 10
-  },
-  {
-    "type": "qcm",
-    "question": "Quel fruit est utilisé pour faire du guacamole ?",
-    "choices": [
-      "Tomate",
-      "Avocat",
-      "Poivron",
-      "Concombre"
-    ],
-    "answer": 1,
-    "points": 10
-  },
-  {
-    "type": "qcm",
-    "question": "Quel film met en scène le personnage de Jack Sparrow ?",
-    "choices": [
-      "Harry Potter",
-      "Pirates des Caraïbes",
-      "Indiana Jones",
-      "Le Seigneur des Anneaux"
-    ],
-    "answer": 1,
-    "points": 10
-  },
-  {
-    "type": "qcm",
-    "question": "Quel chanteur est surnommé le 'King of Pop' ?",
-    "choices": [
-      "Elvis Presley",
-      "Michael Jackson",
-      "Prince",
-      "Justin Timberlake"
-    ],
-    "answer": 1,
-    "points": 10
-  },
-  {
-    "type": "qcm",
-    "question": "Quel ingrédient principal trouve-t-on dans une ratatouille ?",
-    "choices": [
-      "Courgette",
-      "Carotte",
-      "Pomme de terre",
-      "Brocoli"
+      "Toy Story",
+      "Cars",
+      "Shrek",
+      "Monstres & Cie"
     ],
     "answer": 0,
     "points": 10
   },
   {
     "type": "qcm",
-    "question": "Dans quel film Disney trouve-t-on le personnage Olaf ?",
+    "question": "Quel plat italien est composé de couches de pâtes, sauce et fromage ?",
     "choices": [
-      "La Reine des Neiges",
-      "Vaiana",
-      "Encanto",
-      "Raya"
-    ],
-    "answer": 0,
-    "points": 10
-  },
-  {
-    "type": "qcm",
-    "question": "Quel est le nom du plombier célèbre dans les jeux vidéo Nintendo ?",
-    "choices": [
-      "Luigi",
-      "Mario",
-      "Bowser",
-      "Peach"
-    ],
-    "answer": 1,
-    "points": 10
-  },
-  {
-    "type": "qcm",
-    "question": "Quel dessert français est fait de pâte à choux et de crème ?",
-    "choices": [
-      "Éclair",
-      "Macaron",
-      "Tarte Tatin",
-      "Crêpe"
-    ],
-    "answer": 0,
-    "points": 10
-  },
-  {
-    "type": "qcm",
-    "question": "Quel super-héros est aussi connu sous le nom de Bruce Wayne ?",
-    "choices": [
-      "Superman",
-      "Batman",
-      "Iron Man",
-      "Spider-Man"
+      "Pizza",
+      "Lasagnes",
+      "Risotto",
+      "Cannelloni"
     ],
     "answer": 1,
     "points": 10
@@ -133,31 +37,19 @@
   },
   {
     "type": "qcm",
-    "question": "Quel film d'animation met en scène Woody et Buzz l'Éclair ?",
+    "question": "Quel fruit est utilisé pour faire du guacamole ?",
     "choices": [
-      "Toy Story",
-      "Cars",
-      "Shrek",
-      "Monstres & Cie"
+      "Tomate",
+      "Avocat",
+      "Poivron",
+      "Concombre"
     ],
-    "answer": 0,
+    "answer": 1,
     "points": 10
   },
   {
     "type": "qcm",
-    "question": "Quel est le nom du groupe qui a chanté 'Bohemian Rhapsody' ?",
-    "choices": [
-      "Queen",
-      "The Beatles",
-      "Pink Floyd",
-      "U2"
-    ],
-    "answer": 0,
-    "points": 10
-  },
-  {
-    "type": "qcm",
-    "question": "Quel fromage est utilisé dans la recette traditionnelle de la pizza Margherita ?",
+    "question": "Quel fromage est utilisé pour la pizza Margherita ?",
     "choices": [
       "Mozzarella",
       "Cheddar",
@@ -169,7 +61,31 @@
   },
   {
     "type": "qcm",
-    "question": "Quel personnage de jeu vidéo est connu pour collecter des anneaux dorés ?",
+    "question": "Quel personnage Disney perd sa chaussure au bal ?",
+    "choices": [
+      "Ariel",
+      "Cendrillon",
+      "Belle",
+      "Raiponce"
+    ],
+    "answer": 1,
+    "points": 10
+  },
+  {
+    "type": "qcm",
+    "question": "Quel chanteur est connu pour 'Thriller' ?",
+    "choices": [
+      "Prince",
+      "Michael Jackson",
+      "George Michael",
+      "Madonna"
+    ],
+    "answer": 1,
+    "points": 10
+  },
+  {
+    "type": "qcm",
+    "question": "Quel personnage de jeu vidéo collecte des anneaux dorés ?",
     "choices": [
       "Mario",
       "Sonic",
@@ -181,62 +97,266 @@
   },
   {
     "type": "qcm",
-    "question": "Quel film met en scène un clown maléfique nommé Pennywise ?",
+    "question": "Quel dessert français est fait de pâte à choux et de crème ?",
     "choices": [
-      "Ça (IT)",
-      "Conjuring",
-      "Annabelle",
-      "Scream"
+      "Éclair",
+      "Macaron",
+      "Tarte Tatin",
+      "Crêpe"
     ],
     "answer": 0,
     "points": 10
   },
   {
     "type": "qcm",
-    "question": "Quel fruit est utilisé pour faire une tarte Tatin ?",
+    "question": "Quel film met en scène le personnage de Jack Sparrow ?",
     "choices": [
-      "Pomme",
-      "Poire",
-      "Abricot",
-      "Cerise"
+      "Harry Potter",
+      "Pirates des Caraïbes",
+      "Indiana Jones",
+      "Le Seigneur des Anneaux"
+    ],
+    "answer": 1,
+    "points": 10
+  },
+  {
+    "type": "qcm",
+    "question": "Dans quel sport utilise-t-on un volant ?",
+    "choices": [
+      "Tennis de table",
+      "Badminton",
+      "Baseball",
+      "Hockey"
+    ],
+    "answer": 2,
+    "points": 10
+  },
+  {
+    "type": "qcm",
+    "question": "Quel film Pixar montre une famille de super-héros ?",
+    "choices": [
+      "Les Indestructibles",
+      "Vice-Versa",
+      "Ratatouille",
+      "Là-Haut"
     ],
     "answer": 0,
     "points": 10
   },
   {
     "type": "qcm",
-    "question": "Quel chanteur a interprété la chanson 'Shape of You' ?",
+    "question": "Quel ingrédient principal du houmous ?",
     "choices": [
-      "Ed Sheeran",
-      "Sam Smith",
-      "Bruno Mars",
-      "Shawn Mendes"
+      "Pois chiches",
+      "Lentilles",
+      "Haricots",
+      "Aubergines"
     ],
     "answer": 0,
     "points": 10
   },
   {
     "type": "qcm",
-    "question": "Quel film Marvel présente le personnage de Tony Stark ?",
+    "question": "Quel animal est l'emblème de la saga Pokémon ?",
+    "choices": [
+      "Pikachu",
+      "Bulbizarre",
+      "Dracaufeu",
+      "Salamèche"
+    ],
+    "answer": 0,
+    "points": 10
+  },
+  {
+    "type": "qcm",
+    "question": "Dans quel film trouve‑t‑on le personnage Olaf ?",
+    "choices": [
+      "La Reine des Neiges",
+      "Vaiana",
+      "Encanto",
+      "Raya"
+    ],
+    "answer": 0,
+    "points": 10
+  },
+  {
+    "type": "qcm",
+    "question": "Quel condiment japonais accompagne souvent les sushis ?",
+    "choices": [
+      "Moutarde",
+      "Wasabi",
+      "Ketchup",
+      "Harissa"
+    ],
+    "answer": 1,
+    "points": 10
+  },
+  {
+    "type": "qcm",
+    "question": "Quelle boisson gazeuse est réputée pour sa couleur noire ?",
+    "choices": [
+      "Cola",
+      "Limonade",
+      "Ginger Ale",
+      "Tonic"
+    ],
+    "answer": 0,
+    "points": 10
+  },
+  {
+    "type": "qcm",
+    "question": "Quel plat mexicain est une tortilla garnie ?",
+    "choices": [
+      "Tacos",
+      "Paella",
+      "Couscous",
+      "Lasagnes"
+    ],
+    "answer": 0,
+    "points": 10
+  },
+  {
+    "type": "qcm",
+    "question": "Quelle pâte italienne est farcie et en forme de petits anneaux ?",
+    "choices": [
+      "Spaghetti",
+      "Ravioli",
+      "Tortellini",
+      "Penne"
+    ],
+    "answer": 2,
+    "points": 10
+  },
+  {
+    "type": "qcm",
+    "question": "Quel héros Marvel brandit un marteau nommé Mjolnir ?",
     "choices": [
       "Thor",
-      "Iron Man",
-      "Captain America",
-      "Hulk"
+      "Loki",
+      "Hulk",
+      "Captain America"
     ],
-    "answer": 1,
+    "answer": 0,
     "points": 10
   },
   {
-    "type": "qcm",
-    "question": "Quel plat italien est composé de couches de pâtes, sauce et fromage ?",
-    "choices": [
-      "Pizza",
-      "Lasagnes",
-      "Risotto",
-      "Cannelloni"
-    ],
-    "answer": 1,
+    "type": "vf",
+    "question": "Le guacamole est traditionnellement à base d'avocat.",
+    "answer": true,
+    "points": 10
+  },
+  {
+    "type": "vf",
+    "question": "La pizza Margherita traditionnelle utilise du cheddar.",
+    "answer": false,
+    "points": 10
+  },
+  {
+    "type": "vf",
+    "question": "Buzz l'Éclair apparaît dans Toy Story.",
+    "answer": true,
+    "points": 10
+  },
+  {
+    "type": "vf",
+    "question": "Le houmous est principalement composé de pois chiches.",
+    "answer": true,
+    "points": 10
+  },
+  {
+    "type": "vf",
+    "question": "Cendrillon perd une bague pendant le bal.",
+    "answer": false,
+    "points": 10
+  },
+  {
+    "type": "vf",
+    "question": "Sonic est connu pour collecter des pièces carrées.",
+    "answer": false,
+    "points": 10
+  },
+  {
+    "type": "vf",
+    "question": "Michael Jackson est l'interprète de 'Thriller'.",
+    "answer": true,
+    "points": 10
+  },
+  {
+    "type": "vf",
+    "question": "Les sushis viennent de Thaïlande.",
+    "answer": false,
+    "points": 10
+  },
+  {
+    "type": "vf",
+    "question": "La ratatouille contient souvent de la courgette.",
+    "answer": true,
+    "points": 10
+  },
+  {
+    "type": "vf",
+    "question": "Le tiramisu est un dessert italien à base de café.",
+    "answer": true,
+    "points": 10
+  },
+  {
+    "type": "vf",
+    "question": "La carbonara traditionnelle se fait avec de la crème fraîche.",
+    "answer": false,
+    "points": 10
+  },
+  {
+    "type": "vf",
+    "question": "Le cheddar est d'origine britannique.",
+    "answer": true,
+    "points": 10
+  },
+  {
+    "type": "vf",
+    "question": "Le wasabi est une pâte épicée verte.",
+    "answer": true,
+    "points": 10
+  },
+  {
+    "type": "vf",
+    "question": "La baguette est une spécialité espagnole.",
+    "answer": false,
+    "points": 10
+  },
+  {
+    "type": "vf",
+    "question": "La sauce soja est généralement sucrée uniquement.",
+    "answer": false,
+    "points": 10
+  },
+  {
+    "type": "vf",
+    "question": "Le fromage utilisé dans la fondue savoyarde inclut souvent du comté.",
+    "answer": true,
+    "points": 10
+  },
+  {
+    "type": "vf",
+    "question": "Pikachu est un personnage de Disney.",
+    "answer": false,
+    "points": 10
+  },
+  {
+    "type": "vf",
+    "question": "La pizza hawaïenne contient de l'ananas.",
+    "answer": true,
+    "points": 10
+  },
+  {
+    "type": "vf",
+    "question": "Le falafel est traditionnellement à base de bœuf.",
+    "answer": false,
+    "points": 10
+  },
+  {
+    "type": "vf",
+    "question": "La Reine des Neiges est un film des studios Disney.",
+    "answer": true,
     "points": 10
   }
 ]

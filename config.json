@@ -1,17 +1,17 @@
 {
-  "quizTitle": "Quiz Familial — Culture Pop & Cuisine",
+  "quizTitle": "Quiz Familial — Pop & Cuisine (40 questions)",
   "requireName": true,
   "giftTiers": [
     {
-      "minScore": 50,
+      "minScore": 0,
       "label": "Niveau Bronze, tu n'aura pas de cadeaux, mais un bisous !"
     },
     {
-      "minScore": 100,
-      "label": "Niveau Argent, tu mérite une petite enveloppe !"
+      "minScore": 200,
+      "label": "Niveau Argent, tu mérite une petite claque aux fesses avec un bisous !"
     },
     {
-      "minScore": 180,
+      "minScore": 320,
       "label": "Niveau Or, tu à le droit à un gros cadeaux !"
     }
   ],
