@@ -121,14 +121,14 @@
   },
   {
     "type": "qcm",
-    "question": "Dans quel sport utilise-t-on un volant ?",
+    "question": "Quel est le prénom du héros dans 'The Legend of Zelda' ?",
     "choices": [
-      "Tennis de table",
-      "Badminton",
-      "Baseball",
-      "Hockey"
+      "Zelda",
+      "Link",
+      "Ganondorf",
+      "Mario"
     ],
-    "answer": 2,
+    "answer": 1,
     "points": 10
   },
   {

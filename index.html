@@ -3,34 +3,23 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Quiz Familial — Culture Pop & Cuisine</title>
+  <title>Quiz Familial — Pop & Cuisine (40 questions)</title>
   <link rel="stylesheet" href="styles.css" />
 </head>
 <body>
   <header>
-    <img id="logo" src="logo.png" alt="Logo du quiz" />
     <div class="titles">
-      <h1 id="quiz-title">Quiz Familial — Culture Pop & Cuisine</h1>
-      <p id="intro">Répond aux 40 questions, et gagne un cadeau surprise selon ton score !</p>
+      <h1 id="quiz-title">Quiz Familial — Pop & Cuisine (40 questions)</h1>
+      <p id="intro">20 QCM + 20 Vrai/Faux. 45 secondes par question, passage en rouge à 5 s. Cadeau surprise selon votre score !</p>
     </div>
   </header>
-
   <main>
     <section id="start-screen" class="card">
-      <div class="grid">
-        <div class="field" id="name-field">
-          <label for="playerName">Ton prénom ou Pseudo</label>
-          <input type="text" id="playerName" placeholder="Ex: Père Noël" />
-        </div>
-        <div class="field">
-          <label>Règlement</label>
-          <ul>
-            <li>Une réponse par question.</li>
-            <li>45s par question, passé ce délai, 0 point !</li>
-          </ul>
-        </div>
+      <div class="field" id="name-field">
+        <label for="playerName">Votre prénom</label>
+        <input type="text" id="playerName" placeholder="Ex: Alex" />
       </div>
-      <button id="startBtn" class="primary">Commencer ton quiz</button>
+      <button id="startBtn" class="primary">Commencer le quiz</button>
     </section>
 
     <section id="quiz-screen" class="card hidden">
@@ -39,13 +28,13 @@
         <div id="score">Score: <span id="scoreVal">0</span></div>
       </div>
       <div id="timerWrap">
-        <div id="timerLabel">Temps restant: <span id="timeLeft">15</span>s</div>
+        <div id="timerLabel">Temps restant: <span id="timeLeft">45</span>s</div>
         <div class="timer-bar"><div id="timerFill"></div></div>
       </div>
       <div id="question" class="question"></div>
       <div id="choices" class="choices"></div>
       <div class="actions">
-        <button id="nextBtn" class="primary" disabled>Valide et continue</button>
+        <button id="nextBtn" class="primary" disabled>Valider et continuer</button>
       </div>
     </section>
 
@@ -60,16 +49,14 @@
         <button id="printBtn" class="primary">Imprimer</button>
       </div>
       <details>
-        <summary>Voir tes réponses</summary>
+        <summary>Voir vos réponses</summary>
         <div id="review"></div>
       </details>
     </section>
   </main>
-
   <footer>
-    <small>© 2025 — Quiz familial publié par Jean-Yves.</small>
+    <small>© 2025 — Quiz familial publié via GitHub Pages.</small>
   </footer>
-
   <script src="app.js"></script>
 </body>
 </html>
