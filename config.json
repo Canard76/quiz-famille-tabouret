@@ -1,10 +1,20 @@
 {
-  "quizTitle": "Quiz Cadeau Surprise",
+  "quizTitle": "Quiz Familial — Culture Pop & Cuisine",
   "requireName": true,
   "giftTiers": [
-    { "minScore": 0, "label": "Niveau Bronze" },
-    { "minScore": 30, "label": "Niveau Argent" },
-    { "minScore": 50, "label": "Niveau Or" }
+    {
+      "minScore": 0,
+      "label": "Niveau Bronze"
+    },
+    {
+      "minScore": 80,
+      "label": "Niveau Argent"
+    },
+    {
+      "minScore": 140,
+      "label": "Niveau Or"
+    }
   ],
-  "pointsPerQuestionDefault": 10
+  "pointsPerQuestionDefault": 10,
+  "timePerQuestionSeconds": 30
 }

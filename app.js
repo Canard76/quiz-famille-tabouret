@@ -1,13 +1,13 @@
-// Configuration par défaut si config.json n'est pas trouvé
 const defaultConfig = {
-  quizTitle: "Quiz Cadeau Surprise",
-  requireName: false,
+  quizTitle: "Quiz Familial — Culture Pop & Cuisine",
+  requireName: true,
   giftTiers: [
-    { minScore: 0, label: "Niveau Bronze" },
-    { minScore: 30, label: "Niveau Argent" },
-    { minScore: 70, label: "Niveau Or" }
+    { minScore: 0,  label: "Niveau Bronze" },
+    { minScore: 80, label: "Niveau Argent" },
+    { minScore: 140, label: "Niveau Or" }
   ],
-  pointsPerQuestionDefault: 10
+  pointsPerQuestionDefault: 10,
+  timePerQuestionSeconds: 15
 };
 
 let CONFIG = { ...defaultConfig };
@@ -15,7 +15,9 @@ let QUESTIONS = [];
 let state = {
   index: 0,
   score: 0,
-  answers: [] // {question, correctAnswer, selected, correct, points}
+  answers: [],
+  timer: null,
+  timeLeft: defaultConfig.timePerQuestionSeconds
 };
 
 function shuffle(array) {
@@ -27,20 +29,35 @@ function shuffle(array) {
 }
 
 async function loadData() {
-  // Charger config.json (optionnel)
   try {
     const cfgResp = await fetch('config.json');
     if (cfgResp.ok) {
       const cfg = await cfgResp.json();
       CONFIG = { ...defaultConfig, ...cfg };
     }
-  } catch (e) {
-    console.warn('Config par défaut utilisée', e);
-  }
-  // Charger questions.json
+  } catch (e) { console.warn('Config par défaut utilisée', e); }
   const qResp = await fetch('questions.json');
   QUESTIONS = await qResp.json();
-  QUESTIONS = shuffle(QUESTIONS);
+}
+
+function startTimer() {
+  clearInterval(state.timer);
+  state.timeLeft = CONFIG.timePerQuestionSeconds;
+  const timeEl = document.getElementById('timeLeft');
+  const fill = document.getElementById('timerFill');
+  const total = CONFIG.timePerQuestionSeconds;
+  timeEl.textContent = state.timeLeft;
+  fill.style.width = '100%';
+  state.timer = setInterval(() => {
+    state.timeLeft--;
+    timeEl.textContent = state.timeLeft;
+    const pct = Math.max(0, Math.min(100, Math.round(100 * state.timeLeft / total)));
+    fill.style.width = pct + '%';
+    if (state.timeLeft <= 0) {
+      clearInterval(state.timer);
+      autoValidateTimeout();
+    }
+  }, 1000);
 }
 
 function renderQuestion() {
@@ -72,71 +89,35 @@ function renderQuestion() {
       });
       choicesEl.appendChild(div);
     });
-  } else if (q.type === 'vf') {
-    ['Vrai', 'Faux'].forEach((label, idx) => {
-      const val = idx === 0; // Vrai -> true, Faux -> false
-      const div = document.createElement('div');
-      div.className = 'choice';
-      div.textContent = label;
-      div.dataset.value = val;
-      div.addEventListener('click', () => {
-        document.querySelectorAll('.choice').forEach(el => el.classList.remove('selected'));
-        div.classList.add('selected');
-        nextBtn.disabled = false;
-      });
-      choicesEl.appendChild(div);
-    });
   }
+  startTimer();
 }
 
-function validateAndNext() {
+function finalizeSelectionAndFeedback(selectedIndex) {
   const q = QUESTIONS[state.index];
   const points = q.points ?? CONFIG.pointsPerQuestionDefault;
-  const nextBtn = document.getElementById('nextBtn');
-  nextBtn.disabled = true;
-
-  let selected, correct;
-  if (q.type === 'qcm') {
-    const selEl = document.querySelector('.choice.selected');
-    if (!selEl) return;
-    selected = parseInt(selEl.dataset.index, 10);
-    correct = selected === q.answer;
-  } else {
-    const selEl = document.querySelector('.choice.selected');
-    if (!selEl) return;
-    selected = selEl.dataset.value === 'true';
-    correct = selected === q.answer;
-  }
+  let correct = false;
 
   // feedback visuel
   document.querySelectorAll('.choice').forEach(el => {
-    if (q.type === 'qcm') {
-      const idx = parseInt(el.dataset.index, 10);
-      if (idx === q.answer) el.classList.add('correct');
-      if (idx === selected && idx !== q.answer) el.classList.add('wrong');
-    } else {
-      const val = el.dataset.value === 'true';
-      if (val === q.answer) el.classList.add('correct');
-      if (val === selected && val !== q.answer) el.classList.add('wrong');
-    }
+    const idx = parseInt(el.dataset.index, 10);
+    if (idx === q.answer) el.classList.add('correct');
+    if (selectedIndex !== null && idx === selectedIndex && idx !== q.answer) el.classList.add('wrong');
   });
 
-  // mise à jour score
+  if (selectedIndex !== null) correct = selectedIndex === q.answer;
   if (correct) state.score += points;
 
-  // enregistrer réponse
   state.answers.push({
     question: q.question,
-    correctAnswer: q.type === 'qcm' ? q.choices[q.answer] : (q.answer ? 'Vrai' : 'Faux'),
-    selected: q.type === 'qcm' ? q.choices[selected] : (selected ? 'Vrai' : 'Faux'),
+    correctAnswer: q.choices[q.answer],
+    selected: selectedIndex !== null ? q.choices[selectedIndex] : '(aucune)',
     correct,
     points: correct ? points : 0
   });
 
-  // affichage score
   document.getElementById('scoreVal').textContent = state.score;
 
-  // Aller à la suivante après un court délai
   setTimeout(() => {
     state.index++;
     if (state.index < QUESTIONS.length) {
@@ -147,24 +128,30 @@ function validateAndNext() {
   }, 600);
 }
 
+function validateAndNext() {
+  clearInterval(state.timer);
+  const selEl = document.querySelector('.choice.selected');
+  const selectedIndex = selEl ? parseInt(selEl.dataset.index, 10) : null;
+  finalizeSelectionAndFeedback(selectedIndex);
+}
+
+function autoValidateTimeout() {
+  // Pas de sélection: enregistre comme faux et passe à la suivante
+  finalizeSelectionAndFeedback(null);
+}
+
 function giftLabelForScore(score) {
   const tiers = [...CONFIG.giftTiers].sort((a,b) => a.minScore - b.minScore);
   let label = tiers[0].label;
-  for (const t of tiers) {
-    if (score >= t.minScore) label = t.label;
-  }
+  for (const t of tiers) { if (score >= t.minScore) label = t.label; }
   return label;
 }
 
 function generateClaimCode(name, score) {
-  // Génère un code de 6 caractères (non-sensible) pour validation manuelle
   const alphabet = 'ABCDEFGHJKLMNPQRSTUVWXYZ23456789';
   let seed = (Date.now() ^ (name ? name.length * 97 : 12345) ^ (score * 131)) >>> 0;
   let code = '';
-  for (let i = 0; i < 6; i++) {
-    seed = (seed * 1664525 + 1013904223) >>> 0; // LCG simple
-    code += alphabet[seed % alphabet.length];
-  }
+  for (let i = 0; i < 6; i++) { seed = (seed * 1664525 + 1013904223) >>> 0; code += alphabet[seed % alphabet.length]; }
   return code;
 }
 
@@ -181,7 +168,6 @@ function showResults() {
   const claim = generateClaimCode(name, state.score);
   document.getElementById('claimCode').textContent = claim;
 
-  // Review
   const review = document.getElementById('review');
   review.innerHTML = '';
   state.answers.forEach((a, idx) => {
@@ -193,19 +179,16 @@ function showResults() {
 }
 
 function resetQuiz() {
-  state = { index: 0, score: 0, answers: [] };
+  state = { index: 0, score: 0, answers: [], timer: null, timeLeft: CONFIG.timePerQuestionSeconds };
   document.getElementById('scoreVal').textContent = '0';
   document.getElementById('result-screen').classList.add('hidden');
   document.getElementById('start-screen').classList.remove('hidden');
 }
 
-function printResult() {
-  window.print();
-}
+function printResult() { window.print(); }
 
 async function init() {
   await loadData();
-  // Appliquer config UI
   document.getElementById('quiz-title').textContent = CONFIG.quizTitle;
   document.getElementById('name-field').style.display = CONFIG.requireName ? 'block' : 'block';
 
