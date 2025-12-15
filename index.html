@@ -10,17 +10,17 @@
   <header>
     <img id="logo" src="logo.png" alt="Logo du quiz" />
     <div class="titles">
-      <h1 id="quiz-title">Quiz Familial — Pop & Cuisine (40 questions)</h1>
-      <p id="intro">20 QCM + 20 Vrai/Faux. 45 secondes par question, passage en rouge à 5 s. Cadeau surprise selon votre score !</p>
+      <h1 id="quiz-title">Quiz Familial — Pop & Cuisine</h1>
+      <p id="intro">20 QCM + 20 Vrai/Faux. 45 secondes par question, passage en rouge à 5 s, 0 point si temp écoulé. Cadeau surprise selon ton score !</p>
     </div>
   </header>
   <main>
     <section id="start-screen" class="card">
       <div class="field" id="name-field">
-        <label for="playerName">Votre prénom</label>
-        <input type="text" id="playerName" placeholder="Ex: Alex" />
+        <label for="playerName">Ton prénom ou Pseudo</label>
+        <input type="text" id="playerName" placeholder="Ex: le Père Noël" />
       </div>
-      <button id="startBtn" class="primary">Commencer le quiz</button>
+      <button id="startBtn" class="primary">Commence le quiz</button>
     </section>
 
     <section id="quiz-screen" class="card hidden">
@@ -35,7 +35,7 @@
       <div id="question" class="question"></div>
       <div id="choices" class="choices"></div>
       <div class="actions">
-        <button id="nextBtn" class="primary" disabled>Valider et continuer</button>
+        <button id="nextBtn" class="primary" disabled>Valide et continue</button>
       </div>
     </section>
 
@@ -44,19 +44,15 @@
       <p id="finalName"></p>
       <p>Score total: <strong id="finalScore">0</strong></p>
       <p id="giftTier">Cadeau surprise: <strong id="giftLabel">—</strong></p>
-      <p id="claimCodeWrap">Code de validation: <code id="claimCode">—</code></p>
-      <div class="actions">
-        <button id="restartBtn" class="secondary">Rejouer</button>
-        <button id="printBtn" class="primary">Imprimer</button>
-      </div>
+        </div>
       <details>
-        <summary>Voir vos réponses</summary>
+        <summary>Voir tes réponses</summary>
         <div id="review"></div>
       </details>
     </section>
   </main>
   <footer>
-    <small>© 2025 — Quiz familial publié via GitHub Pages.</small>
+    <small>© 2025 — Quiz familial crée par Jean-Yves.</small>
   </footer>
   <script src="app.js"></script>
 </body>
