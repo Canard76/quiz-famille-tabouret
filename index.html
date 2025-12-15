@@ -11,7 +11,7 @@
     <img id="logo" src="logo.png" alt="Logo du quiz" />
     <div class="titles">
       <h1 id="quiz-title">Quiz Familial — Culture Pop & Cuisine</h1>
-      <p id="intro">Répondez aux 20 questions. 45 secondes par question. Cadeau surprise selon votre score !</p>
+      <p id="intro">Répond aux 20 questions. 45 secondes par question. Cadeau surprise selon ton score !</p>
     </div>
   </header>
 
@@ -20,18 +20,18 @@
       <div class="grid">
         <div class="field" id="name-field">
           <label for="playerName">Votre prénom</label>
-          <input type="text" id="playerName" placeholder="Ex: Alex" />
+          <input type="text" id="playerName" placeholder="Ex: Père Noël" />
         </div>
         <div class="field">
           <label>Règlement</label>
           <ul>
-            <li>Une seule bonne réponse par question.</li>
-            <li>30 s par question, passé ce délai la réponse est comptée comme fausse.</li>
-            <li>Cadeaux selon palier.</li>
+            <li>Une réponse par question.</li>
+            <li>45s par question, passé ce délai la réponse est comptée comme fausse.</li>
+            <li>Cadeaux surptise selon tes points récoltés.</li>
           </ul>
         </div>
       </div>
-      <button id="startBtn" class="primary">Commencer le quiz</button>
+      <button id="startBtn" class="primary">Commencer ton quiz</button>
     </section>
 
     <section id="quiz-screen" class="card hidden">
@@ -46,7 +46,7 @@
       <div id="question" class="question"></div>
       <div id="choices" class="choices"></div>
       <div class="actions">
-        <button id="nextBtn" class="primary" disabled>Valider et continuer</button>
+        <button id="nextBtn" class="primary" disabled>Valide et continue</button>
       </div>
     </section>
 
@@ -68,7 +68,7 @@
   </main>
 
   <footer>
-    <small>© 2025 — Quiz familial publié via GitHub Pages.</small>
+    <small>© 2025 — Quiz familial publié par Jean-Yves.</small>
   </footer>
 
   <script src="app.js"></script>
